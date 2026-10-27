@@ -140,7 +140,7 @@ CREATE FUNCTION raise_low_stock_alert() RETURNS trigger AS $$
 DECLARE v_level INT;
 BEGIN
     SELECT reorder_level INTO v_level FROM products WHERE product_id = NEW.product_id;
-    IF NEW.quantity <= v_level AND OLD.quantity > v_level THEN
+    IF NEW.quantity <= v_level AND (TG_OP = 'INSERT' OR OLD.quantity > v_level) THEN
         INSERT INTO low_stock_alerts(product_id, warehouse_id, quantity)
         VALUES (NEW.product_id, NEW.warehouse_id, NEW.quantity);
     ELSIF NEW.quantity > v_level THEN
@@ -150,7 +150,7 @@ BEGIN
     RETURN NEW;
 END $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER trg_low_stock AFTER UPDATE OF quantity ON inventory
+CREATE TRIGGER trg_low_stock AFTER INSERT OR UPDATE OF quantity ON inventory
 FOR EACH ROW EXECUTE FUNCTION raise_low_stock_alert();
 
 -- ============ VIEWS ============

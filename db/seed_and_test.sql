@@ -3,7 +3,7 @@ INSERT INTO categories(name) VALUES ('Grocery'),('Electronics');
 INSERT INTO users(username,password_hash,role) VALUES ('admin','$2b$10$placeholderhash','ADMIN');
 INSERT INTO products(sku,name,description,category_id,supplier_id,unit_price,reorder_level)
 VALUES ('G-001','Basmati Rice 5kg','Long grain aged rice',1,1,450,20),('E-001','USB-C Cable','Braided fast charging cable',2,2,299,15);
-INSERT INTO warehouses(name,city,capacity) VALUES ('WH-Blr','Bengaluru',500),('WH-Che','Chennai',60),('WH-Hyd','Hyderabad',500);
+INSERT INTO warehouses(name,city,capacity) VALUES ('WH-Blr','Bengaluru',500),('WH-Che','Chennai',40),('WH-Hyd','Hyderabad',500);
 INSERT INTO purchase_orders(supplier_id,warehouse_id,created_by) VALUES (1,1,1);
 INSERT INTO po_items VALUES (1,1,100,400);
 CALL receive_purchase_order(1);
