@@ -6,6 +6,7 @@ const PAGE_RULES = [
   { prefix: "/admin", roles: ["ADMIN"] },
   { prefix: "/inventory", roles: ["ADMIN", "MANAGER"] },
   { prefix: "/alerts", roles: ["ADMIN", "MANAGER"] },
+  { prefix: "/supplier-quality", roles: ["ADMIN", "MANAGER"] },
   { prefix: "/products/new", roles: ["ADMIN", "MANAGER"] },
   { prefix: "/purchase-orders/new", roles: ["ADMIN", "MANAGER"] },
 ];

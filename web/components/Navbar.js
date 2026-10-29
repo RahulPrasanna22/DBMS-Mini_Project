@@ -12,6 +12,7 @@ const MENU = [
   { href: "/inventory", label: "Inventory", roles: STAFF },
   { href: "/alerts", label: "Alerts", roles: STAFF },
   { href: "/purchase-orders", label: "Purchase Orders", roles: ALL },
+  { href: "/supplier-quality", label: "Supplier Quality", roles: STAFF },
   { href: "/admin", label: "Admin", roles: ["ADMIN"] },
 ];
 
@@ -47,6 +48,11 @@ export default function Navbar() {
               {m.label}
             </Link>
           ))}
+          {me.role === "SUPPLIER" && me.supplier_id && (
+            <Link href={`/suppliers/${me.supplier_id}`} className="hover:underline">
+              My Documents
+            </Link>
+          )}
         </div>
         <div className="ml-auto flex items-center gap-3 text-sm">
           <span>
