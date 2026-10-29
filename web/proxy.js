@@ -7,6 +7,7 @@ const PAGE_RULES = [
   { prefix: "/inventory", roles: ["ADMIN", "MANAGER"] },
   { prefix: "/alerts", roles: ["ADMIN", "MANAGER"] },
   { prefix: "/products/new", roles: ["ADMIN", "MANAGER"] },
+  { prefix: "/purchase-orders/new", roles: ["ADMIN", "MANAGER"] },
 ];
 
 const PUBLIC_PATHS = ["/login", "/api/auth/login", "/api/health"];

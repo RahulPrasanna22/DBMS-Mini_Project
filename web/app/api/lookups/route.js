@@ -29,7 +29,9 @@ export async function GET() {
         );
     const products = isSupplier
       ? { rows: [] }
-      : await query("SELECT product_id, sku, name FROM products ORDER BY name");
+        : await query(
+          "SELECT product_id, sku, name, unit_price, supplier_id FROM products ORDER BY name"
+        );
 
     return NextResponse.json({
       categories: categories.rows,
